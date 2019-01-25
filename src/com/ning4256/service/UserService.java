@@ -7,7 +7,7 @@ import com.ning4256.po.UserPO;
 
 /**
  * 用户服务类，用于处理用户的登录注册、用户信息展示、修改密码等功能
- * @author Chuan
+ * @author ning4256
  *
  */
 public class UserService {

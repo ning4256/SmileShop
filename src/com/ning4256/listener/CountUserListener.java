@@ -3,7 +3,7 @@ package com.ning4256.listener;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-
+//设置初始在线人数
 public class CountUserListener implements ServletContextListener {
 
    

@@ -21,23 +21,19 @@ public class SingletonListener implements HttpSessionAttributeListener {
 	 
 	 //添加这个用户属性
     public void attributeAdded(HttpSessionBindingEvent se)  { 
-        String name = se.getName();
-        Object obj =  se.getValue();
-        System.out.println(obj);
-        UserPO upo = (UserPO) obj;
-        if(name.equals("user")){
-        	//获取用户id
-        	String login_id = upo.getLogin_id();
-        	//获取当前session
-        	HttpSession curSession = se.getSession();
-        	//查询本地是否有这个session，如果有，终止旧的session
-        	if(sessions.containsKey(login_id)){
-        		HttpSession oldSession = sessions.get(login_id);
-        		oldSession.invalidate();
-        	}
-        	//保存这个session
-        	sessions.put(login_id, curSession);
-        }
+		String name = se.getName();
+		if (name.equals("user")) {
+			UserPO uPo = (UserPO) se.getValue();
+			String loginId = uPo.getLogin_id();
+			HttpSession curSession = se.getSession();
+			if (sessions.containsKey(loginId)) {
+				// 该用户在maps中已经有值了，已经登录了
+				HttpSession oldSession = sessions.get(loginId);
+				// 结束session，就是之前的信息无效
+				oldSession.invalidate();
+			}
+			sessions.put(loginId, se.getSession());
+		}
     }
 
 	@Override
@@ -48,18 +44,7 @@ public class SingletonListener implements HttpSessionAttributeListener {
 
 	@Override
 	public void attributeReplaced(HttpSessionBindingEvent se) {
-		if(se.getName().equals("user")){
-			UserPO oldUpo = (UserPO)se.getValue();
-			UserPO upo = (UserPO) se.getSession().getAttribute("user");
-			if(sessions.containsKey(upo.getLogin_id())){
-				HttpSession oldSession = sessions.get(upo.getLogin_id());
-				oldSession.invalidate();
-				sessions.put(upo.getLogin_id(), se.getSession());
-			}
-			
-			sessions.remove(oldUpo.getLogin_id());
-			
-		}
+
 		
 	}
 

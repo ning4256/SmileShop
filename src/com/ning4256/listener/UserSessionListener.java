@@ -5,10 +5,10 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
-
+//在线人数统计
 public class UserSessionListener implements HttpSessionListener {
 
-
+	//application .getAttribute()获取在线人数
 
     public void sessionCreated(HttpSessionEvent se)  { 
     	synchronized(UserSessionListener.class){

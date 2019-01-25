@@ -9,9 +9,9 @@ import com.ning4256.utils.C3P0Util;
 
 
 public class OrderService {
-
+	
+	//订单服务
 	public Map<String, OrderPO> findOrderByLoginId(Object ologinId) {
-		// TODO Auto-generated method stub
 		Map<String, OrderPO> order=null;
 		String loginId = (String) ologinId;
 		Connection con = C3P0Util.getConnection();

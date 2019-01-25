@@ -3,7 +3,7 @@ package com.ning4256.po;
 
 /**
  * user表的po对象类
- * @author Chuan
+ * @author ning4256
  *
  */
 public class UserPO {
