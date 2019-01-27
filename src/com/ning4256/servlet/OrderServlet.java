@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ning4256.po.OrderPO;
 import com.ning4256.service.OrderService;
 
-import jdk.nashorn.internal.runtime.regexp.joni.SearchAlgorithm;
 
 /**
  * Servlet implementation class OrderServlet

@@ -17,7 +17,7 @@ public class EhUtil {
 		dc = new Cache("demo", 0, false, false, 0, 0);
 		CacheConfiguration config = dc.getCacheConfiguration();
 		//内存中运行存在的最大元素个数
-		config.setMaxElementsInMemory(10000);
+//		config.setMaxElementsInMemory(10000);
 		//设置缓存中的元素是否永久存在
 	   	config.setEternal(false);
 	   	//设置对象最大闲置时间（秒）

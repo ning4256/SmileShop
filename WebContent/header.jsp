@@ -4,7 +4,7 @@
 <html>
 <head>
 
-<meta name="viewport" content="width=device-width" initial-scale=1.0”>
+<meta name="viewport" content="width=device-width">
 <link href="css/style.css" rel="stylesheet">
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/scripts.js" type="text/javascript"></script>
@@ -240,13 +240,13 @@ opacity
 			<div class="user-entry">
 				<a href="index.jsp" class="backHome">首页</a> <span>|</span>
 				<c:if test="${empty user}">
-					<b> 欢迎光临优乐购商城请 </b> 
+					<b> 欢迎光临SmileShop请 </b> 
 					[<a href="testlogin.jsp" class="login-link">登录</a>] 
 					<span>|</span> 
 					[<a href="testregister.jsp" class="register-link">注册</a>]
 				  </c:if>
 				<c:if test="${!empty user }">
-					<b> 欢迎光临优乐购商城</b>
+					<b> 欢迎光临SmileShop</b>
 					<a style="color: red" href="javascript:void(0)">欢迎您,${username}</a>
 					<a style="color: black" href="#" id="loginOut">[安全退出]</a>
 				</c:if>

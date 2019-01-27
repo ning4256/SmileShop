@@ -25,10 +25,12 @@
 			</tr>
 		</thead>
 		<tbody id="cart-body">
-			
+		
 			
 		</tbody>
+		
 </table>
+</div>
 <script>
 	function showCart(){
 		$.ajax({

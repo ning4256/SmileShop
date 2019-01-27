@@ -25,7 +25,7 @@ public class SingletonListener implements HttpSessionAttributeListener {
 		if (name.equals("user")) {
 			UserPO uPo = (UserPO) se.getValue();
 			String loginId = uPo.getLogin_id();
-			HttpSession curSession = se.getSession();
+//			HttpSession curSession = se.getSession();
 			if (sessions.containsKey(loginId)) {
 				// 该用户在maps中已经有值了，已经登录了
 				HttpSession oldSession = sessions.get(loginId);

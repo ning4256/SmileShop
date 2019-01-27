@@ -37,7 +37,6 @@ public class SessionListener implements HttpSessionListener {
     		try {
 				con.setAutoCommit(false);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
     		CartDAO cartDAO = new CartDAO();
@@ -52,7 +51,6 @@ public class SessionListener implements HttpSessionListener {
     			try {
 					con.commit();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
     		}else{

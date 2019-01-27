@@ -29,7 +29,9 @@
 			
 			
 		</tbody>
+	
 </table>
+</div>
 <script>
 function showOrder(){
 	$.ajax({

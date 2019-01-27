@@ -22,8 +22,9 @@ public class CheckOutService {
 	 */
 	public String checkOut(Object oCart, Object ologinId) {
 		String result = "结账失败！";
-		if(oCart == null && ologinId == null){
-			return result;
+		System.out.println(ologinId);
+		if(  ologinId == null || oCart == null){
+			return result = "请登录后再结算订单，谢谢！";
 		}
 		Map<String, CartPO> cart = (Map<String, CartPO>) oCart;
 		
@@ -36,7 +37,6 @@ public class CheckOutService {
 		try {
 			con.setAutoCommit(false);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Collection<CartPO> co=cart.values();
@@ -91,7 +91,6 @@ public class CheckOutService {
 			try {
 				con.commit();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		

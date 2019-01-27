@@ -48,7 +48,6 @@ public class ProductDAO {
 				products.add(po);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -73,7 +72,6 @@ public class ProductDAO {
 				total = rs.getInt("total");
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return total;
@@ -97,7 +95,6 @@ public class ProductDAO {
 				number = rs.getInt("product_count");
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return number;
@@ -129,7 +126,6 @@ public class ProductDAO {
 				re = true;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -154,7 +150,6 @@ public class ProductDAO {
 				price = rs.getDouble("product_price");
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

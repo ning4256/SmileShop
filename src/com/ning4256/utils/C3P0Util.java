@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 /**
  * C3P0工具类
- * @author Chuan
+ * @author ning4256
  *
  */
 public class C3P0Util {
@@ -20,7 +20,6 @@ public class C3P0Util {
 		try {
 			con = pool.getConnection();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return con;
@@ -33,7 +32,6 @@ public class C3P0Util {
 		try {
 			con.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
