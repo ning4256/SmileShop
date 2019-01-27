@@ -24,9 +24,15 @@ public class CheckOutServlet extends HttpServlet {
 		Object oCart=session.getAttribute("cart");
 		//获取用户id
 		Object ologinId=session.getAttribute("userid");
+		
+
+		Object obalance = session.getAttribute("balance");
+		double balance = (double) obalance;
+		System.out.println(balance);
 		String result = checkOutService.checkOut(oCart,ologinId);
 		if (result.startsWith("结账成功")) {
 			//清空购物车
+			
 			session.setAttribute("cart", new HashMap<String,CartPO>());
 		}
 		//响应结果给客户端

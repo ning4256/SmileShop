@@ -16,6 +16,7 @@ public class UserSessionListener implements HttpSessionListener {
 			 ServletContext sc = se.getSession().getServletContext();
 			 Integer online = (Integer) sc.getAttribute("online");
 			 online++;
+//			 System.out.println("这是登录人数"+online);
 			 sc.setAttribute("online", online);
 		}
     }
@@ -25,7 +26,9 @@ public class UserSessionListener implements HttpSessionListener {
 			//在线人数减1
 			 ServletContext sc = se.getSession().getServletContext();
 			 Integer online = (Integer) sc.getAttribute("online");
-			 online--;
+			 if(online > 0) {
+				 online--;
+			 }
 			 sc.setAttribute("online", online);	
 		}
     	

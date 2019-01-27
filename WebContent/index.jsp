@@ -58,47 +58,9 @@
 	</div>
 	<script>
 
-		//注销
-		function loginOut(){
-			$.ajax({
-				url : "loginout",
-				type : "post",
-				data : {
-					operType:"loginout"
-				},
-				dataType : "json",
-				success : function(data) {
-					alert(data);
-					window.location.reload();
-				}
-			});
-			
-		}
-		
 
-		//register 表单提交
-		$("#submit-re").click(function() {
-			$.ajax({
-				url : "register",
-				type : "post",
-				data : {
-					login_id : $("#re_login_id").val(),
-					password : $("#re_password").val(),
-					name : $("#re_name").val(),
-					sex : $("input[name='sex']:checked").val(),
-					age : $("#re_age").val()
-				},
-				dataType : "json",
-				success : function(data) {
-					if (data == "success") {
-						alert("注册成功");
-						$(".register-box").hide();
-					} else {
-						alert("注册失败");
-					}
-				}
-			});
-		});
+
+
 
 		//商品展示
 		function showProducts(ppage) {
@@ -123,11 +85,15 @@
 								+ "<span class='p-name'>"+po.product_name+"</span>"
 								+ "<span class='p-desc'>"+po.product_description+"</span>"
 								+ "<span class='p-price'><i>￥</i>"+po.product_price+"</span>"
-								+ "</div>"
+								
 
 								+ "</a>" 
-								+"<span class='addtocart' onclick='addCart(\""+po.product_id+"\",\""+po.product_name+"\",\""+po.product_pic+"\",\""+po.product_price+"\")'>添加到<br>购物车</span>"
-								+ "</li>";
+								
+						        + "<div class='product_buy fr'>"
+					            + "<a  class='btn btn-primary ' onclick='addCart(\""+po.product_id+"\",\""+po.product_name+"\",\""+po.product_pic+"\",\""+po.product_price+"\")'>立即购买</a>"
+					       		+"</div>" 
+								+ "</li>"
+								+ "</div>";
 								
 								
 

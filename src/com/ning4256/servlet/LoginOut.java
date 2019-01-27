@@ -17,6 +17,7 @@ public class LoginOut extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("utf-8");
 		String operType = request.getParameter("operType");
+//		System.out.println(operType);
 		String msg = "注销失败";
 		if(operType.equals("loginout")){
 			HttpSession session=request.getSession();

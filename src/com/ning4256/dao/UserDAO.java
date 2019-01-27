@@ -12,7 +12,7 @@ import com.ning4256.utils.C3P0Util;
 
 /**
  * 处理user表交互
- * @author Chuan
+ * @author ning4256
  *
  */
 public class UserDAO {
@@ -128,11 +128,55 @@ public class UserDAO {
 				balance = rs.getDouble("money");
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		return balance;
+	}
+	public boolean changePass(String account, String oldPass, String newPass) {
+		boolean changePass=false;
+		String sql ="update login set login_password=? where login_id=?";
+		String sql2 ="update users set password=? where login_id=?";
+		Connection connection=C3P0Util.getConnection();
+		Connection connection2 = C3P0Util.getConnection();
+		PreparedStatement ps =null;
+		PreparedStatement ps2 = null;
+		try {
+			connection.setAutoCommit(false);
+			connection2.setAutoCommit(false);
+			ps =connection.prepareStatement(sql);
+			ps2 = connection2.prepareStatement(sql2);
+			ps.setString(1, oldPass);
+			ps.setString(2, account);
+			ps2.setString(1, oldPass);
+			ps2.setString(2, account);
+
+			
+			int row =ps.executeUpdate();
+			int row2 = ps2.executeUpdate();
+			System.out.println("row:"+row + "row2:" + row2);
+			if (row>0 && row2>0) {
+				changePass=true;
+				connection.commit();
+				connection2.commit();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				ps.close();
+				ps2.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			try {
+				connection.close();
+				connection2.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return changePass;
 	}
 	
 	

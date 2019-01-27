@@ -13,10 +13,7 @@ import com.ning4256.dao.CartDAO;
 import com.ning4256.po.CartPO;
 import com.ning4256.utils.C3P0Util;
 
-/**
- * Application Lifecycle Listener implementation class SessionListener
- *
- */
+
 public class SessionListener implements HttpSessionListener {
 
     public void sessionCreated(HttpSessionEvent se)  { 
@@ -30,7 +27,8 @@ public class SessionListener implements HttpSessionListener {
     	Object ouserId = session.getAttribute("userid");
     	if(obj!=null){
     		HashMap<String, CartPO> cart = (HashMap<String, CartPO>) obj;
-    		int loginid = (int)ouserId;
+    		String ouserId1 = (String) ouserId;
+    		int loginid = Integer.valueOf(ouserId1);
     		//获取map中所有po对象
     		Collection<CartPO> carts=cart.values();
     		Connection con = C3P0Util.getConnection();
@@ -57,7 +55,6 @@ public class SessionListener implements HttpSessionListener {
     			try {
 					con.rollback();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
     		}

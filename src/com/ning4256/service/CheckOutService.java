@@ -6,6 +6,8 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Random;
 
+import javax.servlet.http.HttpSession;
+
 import com.ning4256.dao.OrderDAO;
 import com.ning4256.dao.ProductDAO;
 import com.ning4256.dao.UserDAO;
@@ -24,7 +26,7 @@ public class CheckOutService {
 		String result = "结账失败！";
 		System.out.println(ologinId);
 		if(  ologinId == null || oCart == null){
-			return result = "请登录后再结算订单，谢谢！";
+			return result = "您还未登录！";
 		}
 		Map<String, CartPO> cart = (Map<String, CartPO>) oCart;
 		
@@ -87,7 +89,7 @@ public class CheckOutService {
 		if(!re){
 			result="余额扣除失败：请联系管理员";
 		}else{
-			result="结账成功，本次共花费"+totalPrice+"元";
+			result="结账成功，本次共花费"+totalPrice+"元" + "您的余额为" + (balance-totalPrice)  ;
 			try {
 				con.commit();
 			} catch (SQLException e) {

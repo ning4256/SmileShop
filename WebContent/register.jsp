@@ -23,7 +23,7 @@
 		<div class="row">
 			<form class="form-horizontal col-md-offset-4 col-md-4">
 				<div class="form-group">
-					<label for="inputEmail3" class="col-sm-2 control-label">手机号码</label>
+					<label for="inputEmail3" class="col-sm-2 control-label">手机</label>
 					<div class="col-sm-10">
 						<input type="text" id="re_login_id"  class="form-control"
 							placeholder="手机号码">
@@ -37,7 +37,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+					<label for="inputPassword3" class="col-sm-2 control-label">姓名</label>
 					<div class="col-sm-10">
 						<input type="text" id="re_name" class="form-control"
 							placeholder="姓名">
@@ -60,7 +60,7 @@
 
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" id="submit-re" class="btn btn-default login ">登录</button>
+						<button type="submit" id="submit-re" class="btn btn-default login ">注册</button>
 					</div>
 				</div>
 			</form>
@@ -83,7 +83,7 @@
 			success : function(data) {
 				if (data == "success") {
 					alert("注册成功");
-					window.location.herf="http://localhost:8080/SmileShop/index.jsp";
+					window.location.herf="/index.jsp";
 
 				} else {
 					alert("注册失败");

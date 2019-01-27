@@ -4,6 +4,8 @@ import com.ning4256.dao.UserDAO;
 import com.ning4256.dao.loginDAO;
 import com.ning4256.po.LoginPO;
 import com.ning4256.po.UserPO;
+import com.ning4256.utils.MD5_Encoding;
+import com.ning4256.utils.RegExpUtil;
 
 /**
  * 用户服务类，用于处理用户的登录注册、用户信息展示、修改密码等功能
@@ -45,6 +47,22 @@ public class UserService {
 			upo = ud.findUserById(login_id);
 		}
 		return upo;
+	}
+	//修改密码
+	public String changePass(String account, String password1, String password2) {
+		String result="修改失败";
+		if(!password1.equals(password2)) {
+			result="两次密码不一致，请再次输入";
+			return result;
+		}
+//		String oldPass=MD5_Encoding.lowerMD5(password1);
+//		String newPass=MD5_Encoding.lowerMD5(password2);//将新密码以加密形式存储
+
+		boolean changePass=ud.changePass(account,password1,password2);
+		if (changePass) {
+			result="修改成功";
+		}
+		return result;
 	}
 	
 	

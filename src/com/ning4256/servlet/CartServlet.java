@@ -1,8 +1,9 @@
 package com.ning4256.servlet;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.Collection;
-
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -12,8 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ning4256.dao.UserDAO;
 import com.ning4256.po.CartPO;
+import com.ning4256.po.OrderPO;
 import com.ning4256.service.CartService;
+import com.ning4256.service.OrderService;
+import com.ning4256.utils.C3P0Util;
 
 public class CartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -21,15 +26,29 @@ public class CartServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//获取页面参数
 		String operType = request.getParameter("operType");
+		UserDAO userDAO = new UserDAO();
+		Connection con = C3P0Util.getConnection();
+		HashMap<String,OrderPO> order = null;
+		Object result = null;
+		OrderService orderService = new OrderService();
+		HttpSession session = request.getSession();
 		if(operType==null){
 			return; //没有传参，不做任何操作
 		}
-		//从session中取出购物车Map
-		HttpSession session = request.getSession();
+
 		//从session中取出数据
 		Object obj=session.getAttribute("cart"); 
+		//用户id
+		Object ologinId1=session.getAttribute("userid");
+		order = (HashMap<String, OrderPO>) orderService.findOrderByLoginId(ologinId1);
+		String loginId1 = (String) ologinId1;
+		//查询用户余额
+		double balance = userDAO.findBalanceByLoginId(con,loginId1);
+//		System.out.println("这是cartsevlet的余额" + balance);
+		session.setAttribute("balance", balance);
+		
 		Map<String,CartPO> cart = null;
-		Object result=null;
+
 		if(obj==null){
 			//session中没有购物车数据
 			//cart = new HashMap<String,CartPO>();
@@ -53,7 +72,7 @@ public class CartServlet extends HttpServlet {
 		}
 		ObjectMapper om = new ObjectMapper();
 		om.writeValue(response.getOutputStream(), result);
-		System.out.println(cart);
+//		System.out.println(cart);
 	}
 	/**
 	 * 从购物车中移除一个商品
@@ -62,7 +81,6 @@ public class CartServlet extends HttpServlet {
 	 * @return
 	 */
 	private Collection<CartPO> delete(HttpServletRequest request, Map<String, CartPO> cart) {
-		// TODO Auto-generated method stub
 		String id=request.getParameter("id");
 		cart.remove(id);
 		Collection<CartPO> carts = cart.values();

@@ -25,7 +25,7 @@ public class EhUtil {
 	   	//设置元素从创建到消亡的最大时间间隔
 		config.setTimeToLiveSeconds(120);
 		//硬盘最大缓存元素个数
-	    config.setMaxElementsOnDisk(10000000);
+//	    config.setMaxElementsOnDisk(10000000);
 	    //磁盘失效线程运行时间间隔
 	    config.setDiskExpiryThreadIntervalSeconds(120);
 	    //当达到maxElementsInMemory限制时，Ehcache将会根据指定的策略去清理内存。

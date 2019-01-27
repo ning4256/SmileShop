@@ -12,9 +12,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ning4256.po.UserPO;
 import com.ning4256.service.UserService;
 
-/**
- * Servlet implementation class LoginServlet
- */
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	UserService us = new UserService();
@@ -33,7 +30,7 @@ public class LoginServlet extends HttpServlet {
 			
 			session.setAttribute("user", upo);
 			session.setAttribute("username", upo.getName());
-			System.out.println(upo.getName());
+
 			session.setAttribute("userid", upo.getLogin_id());
 			info="success";
 //			request.getRequestDispatcher("index.jsp").forward(request, response);

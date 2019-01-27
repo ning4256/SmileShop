@@ -29,14 +29,18 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
-  <listener>
-    <listener-class>com.ning4256.listener.SingletonListener</listener-class>
-  </listener>
+
   <listener>
     <listener-class>com.ning4256.listener.CountUserListener</listener-class>
   </listener>
+    <listener>
+    <listener-class>com.ning4256.listener.SessionListener</listener-class>
+  </listener>
   <listener>
     <listener-class>com.ning4256.listener.UserSessionListener</listener-class>
+  </listener>
+    <listener>
+    <listener-class>com.ning4256.listener.SingletonListener</listener-class>
   </listener>
   <servlet>
     <description></description>
@@ -100,4 +104,14 @@
     <filter-name>LoginFilter</filter-name>
     <url-pattern>/LoginFilter</url-pattern>
   </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ChangePass</display-name>
+    <servlet-name>ChangePass</servlet-name>
+    <servlet-class>com.ning4256.servlet.ChangePass</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChangePass</servlet-name>
+    <url-pattern>/changePass</url-pattern>
+  </servlet-mapping>
 </web-app>

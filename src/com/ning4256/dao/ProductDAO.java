@@ -10,11 +10,6 @@ import java.util.List;
 import com.ning4256.po.ProductPO;
 import com.ning4256.service.ProductService;
 
-/**
- * 根据页码查找商品
- * @author 
- *
- */
 public class ProductDAO {
 
 	public List<ProductPO> findAllByIndex(Connection con, int index) {

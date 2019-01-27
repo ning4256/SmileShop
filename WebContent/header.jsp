@@ -124,7 +124,11 @@ opacity
 
 
 
+
+
 :
+
+
 
 
 
@@ -158,7 +162,11 @@ opacity
 
 
 
+
+
 :
+
+
 
 
 
@@ -181,7 +189,9 @@ opacity
 
 
 
+
  
+
 
 
 
@@ -240,18 +250,25 @@ opacity
 			<div class="user-entry">
 				<a href="index.jsp" class="backHome">首页</a> <span>|</span>
 				<c:if test="${empty user}">
-					<b> 欢迎光临SmileShop请 </b> 
-					[<a href="testlogin.jsp" class="login-link">登录</a>] 
+					<b> 欢迎光临!请 </b> 
+					[<a href="login.jsp" class="login-link">登录</a>] 
 					<span>|</span> 
-					[<a href="testregister.jsp" class="register-link">注册</a>]
+					[<a href="register.jsp" class="register-link">注册</a>]
 				  </c:if>
 				<c:if test="${!empty user }">
-					<b> 欢迎光临SmileShop</b>
+					<b> 欢迎光临 </b>
 					<a style="color: red" href="javascript:void(0)">欢迎您,${username}</a>
-					<a style="color: black" href="#" id="loginOut">[安全退出]</a>
+					<span>|</span> 
+					[<a href="changePass.jsp" class="register-link">修改密码</a>]
+					<a style="color: black" id="loginOut">[安全退出]</a>
 				</c:if>
 			</div>
 			<ul class="quick-menu">
+				<li class="user-center">
+					<div class="menu">
+						<a href="javascript:void(0)">在线人数:<c:out value="${online}"></c:out></a> <span class="hline"></span>
+					</div>
+				</li>
 				<li class="user-center">
 					<div class="menu">
 						<a href="javascript:void(0)">我的商城</a> <i class="arrow"></i>
@@ -302,5 +319,22 @@ opacity
 			</ul>
 		</div>
 	</div>
+	<script>
+		//注销
+		$("#loginOut").click(function() {
+			$.ajax({
+				url : "loginOut",
+				type : "post",
+				data : {
+					operType : "loginout"
+				},
+				dataType : "json",
+				success : function(data) {
+					alert(data);
+					window.location.href = "index.jsp";
+				}
+			});
+		})
+	</script>
 </body>
 </html>

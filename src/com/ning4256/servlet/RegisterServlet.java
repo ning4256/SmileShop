@@ -9,9 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ning4256.service.UserService;
 
-/**
- * Servlet implementation class RegisterServlet
- */
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	UserService us = new UserService();

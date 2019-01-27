@@ -11,9 +11,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet Filter implementation class LoginFilter
- */
+
 @WebFilter("/LoginFilter")
 public class LoginFilter implements Filter {
 
