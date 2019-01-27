@@ -23,7 +23,6 @@ public class ChangePass extends HttpServlet {
 		String result="修改失败";
 		HttpSession session=req.getSession();
 		String account = (String) session.getAttribute("userid");//获取当前登录账户
-//		System.out.println("这是登录者的id" + account);
 		UserService userService=new UserService();
 		result=userService.changePass(account,password1,password2);//改变密码
 		System.out.println("这是changePass"+result);

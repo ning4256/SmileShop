@@ -16,7 +16,7 @@
 </style>
 </head>
 <body>
-<jsp:include page="/header.jsp"></jsp:include>
+	<jsp:include page="/header.jsp"></jsp:include>
 	<div class="container">
 
 		<h2 class="text-center">请注册</h2>
@@ -25,7 +25,7 @@
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-2 control-label">手机</label>
 					<div class="col-sm-10">
-						<input type="text" id="re_login_id"  class="form-control"
+						<input type="text" id="re_login_id" class="form-control"
 							placeholder="手机号码">
 					</div>
 				</div>
@@ -60,38 +60,40 @@
 
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" id="submit-re" class="btn btn-default login ">注册</button>
+						<button type="submit" id="submit-re"
+							class="btn btn-default login ">注册</button>
 					</div>
 				</div>
 			</form>
 		</div>
 	</div>
 	<script>
-	//register 表单提交
-	$("#submit-re").click(function() {
-		$.ajax({
-			url : "register",
-			type : "post",
-			data : {
-				login_id : $("#re_login_id").val(),
-				password : $("#re_password").val(),
-				name : $("#re_name").val(),
-				sex : $("input[name='sex']:checked").val(),
-				age : $("#re_age").val()
-			},
-			dataType : "json",
-			success : function(data) {
-				if (data == "success") {
-					alert("注册成功");
-					window.location.herf="/index.jsp";
+		//register 表单提交
+		$("#submit-re").click(function() {
+			$.ajax({
+				url : "register",
+				type : "post",
+				data : {
+					login_id : $("#re_login_id").val(),
+					password : $("#re_password").val(),
+					name : $("#re_name").val(),
+					sex : $("input[name='sex']:checked").val(),
+					age : $("#re_age").val()
+				},
+				dataType : "json",
+				success : function(data) {
+					if(data == "success") {
+						alert("注册成功");
+						window.location.href = "index.jsp";
+					}else {
+						alert("注册失败")
+						window.location.reload();
+					}
+					
 
-				} else {
-					alert("注册失败");
-					window.location.reload();
 				}
-			}
+			});
 		});
-	});
 	</script>
 
 </body>

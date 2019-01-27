@@ -126,7 +126,11 @@ opacity
 
 
 
+
+
 :
+
+
 
 
 
@@ -164,7 +168,11 @@ opacity
 
 
 
+
+
 :
+
+
 
 
 
@@ -190,7 +198,9 @@ opacity
 
 
 
+
  
+
 
 
 
@@ -266,34 +276,16 @@ opacity
 			<ul class="quick-menu">
 				<li class="user-center">
 					<div class="menu">
-						<a href="javascript:void(0)">在线人数:<c:out value="${online}"></c:out></a> <span class="hline"></span>
+						<a href="javascript:void(0)">在线人数:<c:out value="${online}"></c:out></a>
+						<span class="hline"></span>
 					</div>
 				</li>
 				<li class="user-center">
 					<div class="menu">
-						<a href="javascript:void(0)">我的商城</a> <i class="arrow"></i>
+						<a href="${pageContext.request.contextPath}/cart.jsp">购物车</a>
+					</div>
+				</li>
 
-					</div> <span class="hline"></span>
-					<div class="menu-bd menu-bdp">
-						<ul>
-							<li><a href="${pageContext.request.contextPath}/cart.jsp">购物车</a></li>
-							<li><a href="javascript:void(0)">个人主页</a></li>
-							<li><a href="javascript:void(0)">我的好友</a></li>
-						</ul>
-					</div>
-				</li>
-				<li class="user-center">
-					<div class="menu">
-						<a href="javascript:void(0)">卖家中心</a> <i class="arrow"></i> <span
-							class="hline"></span>
-					</div>
-					<div class="menu-bd menu-bdp">
-						<ul>
-							<li><a href="javascript:void(0)">已售商品</a></li>
-							<li><a href="javascript:void(0)">销售商品</a></li>
-						</ul>
-					</div>
-				</li>
 				<li class="user-center">
 					<div class="menu">
 						<a href="order.jsp">我的订单</a> <span class="hline"></span>
