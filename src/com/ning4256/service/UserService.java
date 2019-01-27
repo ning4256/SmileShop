@@ -4,8 +4,6 @@ import com.ning4256.dao.UserDAO;
 import com.ning4256.dao.loginDAO;
 import com.ning4256.po.LoginPO;
 import com.ning4256.po.UserPO;
-import com.ning4256.utils.MD5_Encoding;
-import com.ning4256.utils.RegExpUtil;
 
 /**
  * 用户服务类，用于处理用户的登录注册、用户信息展示、修改密码等功能

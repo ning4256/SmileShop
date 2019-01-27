@@ -113,14 +113,5 @@
     <servlet-name>ChangePass</servlet-name>
     <url-pattern>/changePass</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>Detail</display-name>
-    <servlet-name>Detail</servlet-name>
-    <servlet-class>com.ning4256.servlet.Detail</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Detail</servlet-name>
-    <url-pattern>/detail</url-pattern>
-  </servlet-mapping>
+
 </web-app>

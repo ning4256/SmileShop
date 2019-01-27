@@ -1,82 +1,86 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" import="java.util.*"
+	contentType="text/html; charset=utf-8"%>
+<%@ page import="com.ning4256.dao.ProductDAO"%>
+<%@ page import="com.ning4256.po.ProductPO"%>
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>商品详情页</title>
+
+
+<title>商品详情页面</title>
+
+
+
+<style type="text/css">
+div {
+	float: left;
+	margin: 10px;
+}
+
+div dd {
+	margin: 0px;
+	font-size: 10px;
+}
+
+div dd.dd_name {
+	color: blue;
+}
+
+div dd.dd_city {
+	color: #000;
+}
+</style>
 </head>
+
 <body>
+	<h1>商品详情 </h1>
+	<hr>
+	<center>
+		<table width="750" height="60" cellpadding="0" cellspacing="0"
+			border="0">
+			<tr>
+				<!-- 商品详情  -->
+				<%
+					ProductDAO itemsDao = new ProductDAO();
+					ProductPO item = itemsDao.getItemById(Integer.valueOf(request.getParameter("productid")));
+					if (item != null) {
+				%>
+				
 
-<div ng-if="product.name!='小米手机5'">
-    <div  ng-include="'view/404.html'"></div>
-</div>
+				<td width="70%" valign="top">
+					<table>
+						<tr>
+							<td rowspan="4"><img
+								src="<%=item.getProduct_pic()%>" width="200"
+								height="200" /></td>
+						</tr>
+						<tr>
+							<td><B><%=item.getProduct_name()%></B></td>
+						</tr>
+						<tr>
+							<td>描述：<%=item.getProduct_description()%></td>
+						</tr>
+						<tr>
+							<td>价格：<%=item.getProduct_price()%></td>
+						</tr>
+					</table>
+				</td>
 
-<div ng-if="product.name=='小米手机5'" class="product_bd" ng-switch="product.detail.name">
-    <!--<h1>{{product.detail.name}}</h1>-->
-
-    <div ng-switch-when="概述">
-        <div class="product_description">
-            <div class="description_text">
-                <h1>小米手机5</h1>
-                <h2>十余项黑科技，很轻狠快</h2>
-                <p>骁龙820处理器，最大可选 4GB 内存 + 128GB 闪存
-                    <br/>4 轴防抖相机，3D陶瓷 / 玻璃机身
-                </p>
-                <p class="price">1999 <span>元起</span></p>
-            </div>
-            <img src="resource/img/mi5/h-12.jpg" alt=""/>
-        </div>
-
-        <div class="product_description">
-            <div class="description_text">
-                <h2>14 万分，快得有点狠</h2>
-                <p>CPU 性能翻倍的骁龙 820 处理器，提速 87% 的 UFS 闪存，快 40% 的 Adreno 530 图形引擎，
-                    <br/>快 100% 的双通道 LPDDR4，Antutu 跑分性能测试高达惊人的 14 万分。
-                </p>
-                <p class="price">1999 <span>元起</span></p>
-
-                <ul class="side-text side-text-b">
-                    <li><span class="side-title webfont">骁龙820</span>
-                        <p class="side-cont">旗舰处理器</p>
-                    </li>
-                    <li class="mid"><span class="side-title webfont">4GB</span>
-                        <p class="side-cont">可选最大内存</p>
-                    </li>
-                    <li><span class="side-title webfont">128GB</span>
-                        <p class="side-cont">可选最大闪存</p>
-                    </li>
-                </ul>
-            </div>
-            <img src="resource/img/mi5/h-8.jpg" alt=""/>
-        </div>
-
-        <div class="product_description">
-            <div class="description_text">
-                <h1>小米手机5</h1>
-                <h2>十余项黑科技，很轻狠快</h2>
-                <p>骁龙820处理器，最大可选 4GB 内存 + 128GB 闪存
-                    <br/>4 轴防抖相机，3D陶瓷 / 玻璃机身
-                </p>
-                <p class="price">1999 <span>元起</span></p>
-            </div>
-            <img src="resource/img/mi5/h-13.jpg" alt=""/>
-        </div>
-    </div>
-
-    <div ng-switch-when="黑科技">
-        <div ng-include="'view/page/template/hei.html'"></div>
-    </div>
-
-    <div ng-switch-when="相机">
-        <div  ng-include="'view/page/template/camera.html'"></div>
-    </div>
-
-    <div ng-switch-when="屏幕">
-        <div  ng-include="'view/page/template/screen.html'"></div>
-    </div>
+				<%
+					}
+				%>
+				
 
 
-</div>
+
+			</tr>
+		</table>
+	</center>
+	<script>
+		console.log(item);
+	
+	</script>
 </body>
 </html>

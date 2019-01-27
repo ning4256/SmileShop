@@ -78,7 +78,7 @@
 					var content = "";
 					for (var i = 0; i < arr.length; i++) {
 						var po=arr[i];
-						content += "<li>" + "<a href='detail.jsp/?productid="+po.product_id+"'>"
+						content += "<li>" + "<a href='detail.jsp?productid="+po.product_id+"'>"
 								+ "<img src='"+po.product_pic+"'>"
 
 								+ "<div class='p-info'>"
@@ -96,64 +96,66 @@
 								+ "</div>";
 								
 								
-
+					
 					}
+
+
+					
 					$("#product-list ul.single-page").html(content);
 					$("#currentpage").html(ppage);
 					$("#totalpage").html(data.totalPage);
+					
 				}
 
 			});
 		}
 		showProducts(1);
-		function prePage(){
+		function prePage() {
 			//获取当前页码
 			var current = parseInt($("#currentpage").html());
-			if(current>1){
-				showProducts(current-1);
+			if (current > 1) {
+				showProducts(current - 1);
 			}
 		}
-		function nextPage(){
+		function nextPage() {
 			//获取当前页码
 			var current = parseInt($("#currentpage").html());
 			//获取总页码
 			var total = parseInt($("#totalpage").html());
-			if(current<total){
-				showProducts(current+1);
+			if (current < total) {
+				showProducts(current + 1);
 			}
 		}
-		function endPage(){
+		function endPage() {
 			var total = parseInt($("#totalpage").html());
 			showProducts(total);
 		}
 		//计数器
 		productNumber = 0;
-		function addCart(pid,pname,pimg,pprice){
-			var number=0;
+		function addCart(pid, pname, pimg, pprice) {
+			var number = 0;
 			$.ajax({
 				url : "cart",
 				type : "post",
 				data : {
 					operType : "update",
-					id:pid,
-					name:pname,
-					img:pimg,
-					count:1,
-					price:pprice
+					id : pid,
+					name : pname,
+					img : pimg,
+					count : 1,
+					price : pprice
 				},
 				dataType : "json",//期待的响应数据
 				success : function(data) {
-					
+
 					alert(data);
 					productNumber++;
 					$(".cart-number").text(productNumber);
-					
+
 				}
 			});
-			
-		}
-		
 
+		}
 	</script>
 
 

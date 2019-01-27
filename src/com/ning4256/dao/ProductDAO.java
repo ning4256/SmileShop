@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.ning4256.po.ProductPO;
 import com.ning4256.service.ProductService;
+import com.ning4256.utils.C3P0Util;
 
 public class ProductDAO {
 
@@ -150,5 +151,59 @@ public class ProductDAO {
 		
 		return price;
 	}
+	//获得单个商品
+    public ProductPO getItemById(int id){
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        try{
+            conn = C3P0Util.getConnection();
+            System.out.println("productDAO：" + id);
+            String sql = "select * from product where product_id=?;";  //sql语句
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1,id);
+            rs = stmt.executeQuery();
+            if(rs.next()){
+                ProductPO item = new ProductPO();
+                
+                item.setProduct_id(rs.getInt("product_id"));
+                item.setProduct_name(rs.getString("product_name"));
+                item.setProduct_count(rs.getInt("product_count"));
+                item.setProduct_price(rs.getInt("product_price"));
+                item.setProduct_pic(rs.getString("product_pic"));
+                item.setProduct_description(rs.getString("product_description"));
+//                System.out.println("item:"+item);
+                return item;
+            }else{
+                return null;
+            }
+           
+            
+        }catch(Exception ex){
+            ex.printStackTrace();
+            return null;
+        }finally{
+            //释放数据集对象
+            if(rs!=null){
+                try{
+                    rs.close();
+                    rs = null;
+                }catch(Exception ex){
+                    ex.printStackTrace();
+                }
+            }
+            //释放语句对象
+            if(stmt!=null){
+                try{
+                    stmt.close();
+                    stmt=null;
+                }catch(Exception ex){
+                    ex.printStackTrace();
+                }
+            }
+        }
+        
+    }
 
 }
