@@ -8,12 +8,20 @@
 <html>
 <head>
 
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="js/jquery.min.js"></script>
+<script src="js/index.js"></script>
+<link rel="stylesheet" href="css/index.css" type="text/css">
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 <title>商品详情页面</title>
 
 
 
 <style type="text/css">
+* {
+	margin:0;
+	padding:0;
+}
 div {
 	float: left;
 	margin: 10px;
@@ -35,8 +43,10 @@ div dd.dd_city {
 </head>
 
 <body>
-	<h1>商品详情 </h1>
+	<jsp:include page="/header.jsp"></jsp:include>
+	<h1>商品详情</h1>
 	<hr>
+	<div>
 	<center>
 		<table width="750" height="60" cellpadding="0" cellspacing="0"
 			border="0">
@@ -47,14 +57,13 @@ div dd.dd_city {
 					ProductPO item = itemsDao.getItemById(Integer.valueOf(request.getParameter("productid")));
 					if (item != null) {
 				%>
-				
+
 
 				<td width="70%" valign="top">
 					<table>
 						<tr>
-							<td rowspan="4"><img
-								src="<%=item.getProduct_pic()%>" width="200"
-								height="200" /></td>
+							<td rowspan="4"><img src="<%=item.getProduct_pic()%>"
+								width="200" height="200" /></td>
 						</tr>
 						<tr>
 							<td><B><%=item.getProduct_name()%></B></td>
@@ -65,22 +74,49 @@ div dd.dd_city {
 						<tr>
 							<td>价格：<%=item.getProduct_price()%></td>
 						</tr>
+						<tr>
+							<td><a  class='btn btn-primary' onclick='addCart("<%=item.getProduct_id() %>","<%=item.getProduct_name() %>","<%=item.getProduct_pic() %>","<%=item.getProduct_price() %>")'>立即购买</a></td>
+						</tr>
 					</table>
 				</td>
 
 				<%
 					}
 				%>
-				
+
 
 
 
 			</tr>
 		</table>
 	</center>
+	</div>
 	<script>
-		console.log(item);
-	
+	function addCart(pid, pname, pimg, pprice) {
+		var number = 0;
+		
+		$.ajax({
+			url : "cart",
+			type : "post",
+			data : {
+				operType : "update",
+				id : pid,
+				name : pname,
+				img : pimg,
+				count : 1,
+				price : pprice
+			},
+			dataType : "json",//期待的响应数据
+			success : function(data) {
+
+				alert("成功加入购物车");
+				productNumber++;
+				$(".cart-number").text(productNumber);
+
+			}
+		});
+
+	}
 	</script>
 </body>
 </html>
