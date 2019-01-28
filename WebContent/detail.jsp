@@ -18,27 +18,7 @@
 
 
 <style type="text/css">
-* {
-	margin:0;
-	padding:0;
-}
-div {
-	float: left;
-	margin: 10px;
-}
 
-div dd {
-	margin: 0px;
-	font-size: 10px;
-}
-
-div dd.dd_name {
-	color: blue;
-}
-
-div dd.dd_city {
-	color: #000;
-}
 </style>
 </head>
 

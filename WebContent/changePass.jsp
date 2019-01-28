@@ -53,7 +53,7 @@
 			success : function(data) {
 				if (data == "修改成功") {
 					alert("修改成功");
-					window.location.herf="http://localhost:8080/SmileShop/index.jsp";
+					window.location.herf="index.jsp";
 				} else {
 					alert("修改失败");
 					window.location.reload();

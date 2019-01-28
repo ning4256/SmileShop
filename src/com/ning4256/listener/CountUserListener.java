@@ -15,7 +15,7 @@ public class CountUserListener implements ServletContextListener {
 	
     public void contextInitialized(ServletContextEvent sce)  { 
     	//设置在线人数初始值
-        Integer count = 1;
+        Integer count = 0;
         sce.getServletContext().setAttribute("online",count);
     }
 	
