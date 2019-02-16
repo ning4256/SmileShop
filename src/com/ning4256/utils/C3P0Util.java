@@ -11,6 +11,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
  */
 public class C3P0Util {
 	private static ComboPooledDataSource pool = new ComboPooledDataSource("myc3p0xml"); 
+
 	/**
 	 * 获取一个数据库连接
 	 * @return
